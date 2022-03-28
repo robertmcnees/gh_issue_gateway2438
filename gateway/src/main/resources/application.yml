@@ -1,0 +1,17 @@
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: controlTest
+          uri: http://localhost:9090
+          predicates:
+            - Path=/control
+          filters:
+            - PrefixPath=/serviceA
+        - id: variableTest
+          uri: http://localhost:9090
+          predicates:
+            - Path=/{var}
+          filters:
+            - PrefixPath=/serviceB
