@@ -9,11 +9,10 @@ spring:
             - Path=/control
           filters:
             - PrefixPath=/serviceA
-          order: 1
-        - id: variableTest
+        - id: gh_test
           uri: http://localhost:9090
           predicates:
-            - Path=/{var}
+            - Path=/partners/{partner}/home
           filters:
-            - PrefixPath=/serviceB
-          order: 2
+            - PrefixPath=/{partner}
+
