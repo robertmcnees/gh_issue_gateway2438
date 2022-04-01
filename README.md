@@ -11,7 +11,9 @@ The project has 2 componenents:
 
 `curl http://localhost:9090/serviceA/control`
 
-`curl http://localhost:9090/serviceB/variable`
+`curl http://localhost:9090/{var1}/partners/{var2}/home`
+
+For direct testing var1 and var2 can be different.  When routed from the Gateway they will be the same.
 
 These simple endpoints only return a string with the method name.
 
@@ -22,9 +24,7 @@ These simple endpoints only return a string with the method name.
 
 This URL will add the `/serviceA` prefix.
 
-`curl http://localhost:8080/variable`
+`curl http://localhost:8080/parnters/{var}/home`
 
-This URL ill add the `/serviceB` prefix.  For this exmaple `/variable` must be used because that is the URL of the serviceB endpoint.  You can use another URL i.e. `/foo` and Gateway will route it OK but you will receive a 404 as the endpoint does not exist on the server.
+Gateway will capture the value of `{var}` and add it as a prefix.  This effectively results in `{var}` being on the routed path twice.
 
-
-For this example an `order` property was specified to be explicit about which filter should be preferred.  This is because `/control' could be picked up by either route.
